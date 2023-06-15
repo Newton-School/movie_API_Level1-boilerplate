@@ -1,0 +1,371 @@
+{
+  "stats": {
+    "suites": 7,
+    "tests": 9,
+    "passes": 9,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-06-13T17:14:51.992Z",
+    "end": "2023-06-13T17:14:52.209Z",
+    "duration": 217,
+    "testsRegistered": 9,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2df9de8f-595a-476b-ac2c-c8c691745f8d",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "60c31272-365c-48b5-9dcd-c5e3919dc855",
+          "title": "Movie API",
+          "fullFile": "F:\\Movies API\\movies_api\\__tests__\\test.js",
+          "file": "\\__tests__\\test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "b1414894-21d3-415f-b7f8-1d3ec8102c96",
+              "title": "GET /movies",
+              "fullFile": "F:\\Movies API\\movies_api\\__tests__\\test.js",
+              "file": "\\__tests__\\test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should return all movies",
+                  "fullTitle": "Movie API GET /movies should return all movies",
+                  "timedOut": false,
+                  "duration": 31,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "chai\n    .request(app)\n    .get('/movies')\n    .end((err, res) => {\n        expect(res).to.have.status(200);\n        expect(res.body).to.be.an('array');\n        expect(res.body).to.have.lengthOf(20); // Assuming there are 20 movies in the JSON file\n        done();\n    });",
+                  "err": {},
+                  "uuid": "70ccdba8-16af-40e4-a774-f3bea3f63961",
+                  "parentUUID": "b1414894-21d3-415f-b7f8-1d3ec8102c96",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "70ccdba8-16af-40e4-a774-f3bea3f63961"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 31,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 60000
+            },
+            {
+              "uuid": "d91c35ad-1d91-4ace-8ded-0e3d8f92c26b",
+              "title": "POST /movies",
+              "fullFile": "F:\\Movies API\\movies_api\\__tests__\\test.js",
+              "file": "\\__tests__\\test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should add a new movie",
+                  "fullTitle": "Movie API POST /movies should add a new movie",
+                  "timedOut": false,
+                  "duration": 39,
+                  "state": "passed",
+                  "speed": "medium",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const newMovie = {\n    title: 'Test Movie',\n    genre: 'Test Genre',\n    director: 'Test Director',\n    year: 2023,\n    rating: 7.5\n};\nchai\n    .request(app)\n    .post('/movies')\n    .send(newMovie)\n    .end((err, res) => {\n        expect(res).to.have.status(200);\n        expect(res.body).to.have.property('message').equal('Movie added successfully');\n        done();\n    });",
+                  "err": {},
+                  "uuid": "fd72b34b-5129-43cf-9890-41b3b427ed0b",
+                  "parentUUID": "d91c35ad-1d91-4ace-8ded-0e3d8f92c26b",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "fd72b34b-5129-43cf-9890-41b3b427ed0b"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 39,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 60000
+            },
+            {
+              "uuid": "514fdb83-5f14-452b-8e77-93bcd2298963",
+              "title": "PUT /movies/:id",
+              "fullFile": "F:\\Movies API\\movies_api\\__tests__\\test.js",
+              "file": "\\__tests__\\test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should update an existing movie",
+                  "fullTitle": "Movie API PUT /movies/:id should update an existing movie",
+                  "timedOut": false,
+                  "duration": 16,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const updatedMovie = {\n    title: 'Updated Movie',\n    genre: 'Updated Genre',\n    director: 'Updated Director',\n    year: 2022,\n    rating: 8.0\n};\nchai\n    .request(app)\n    .put('/movies/21') // Assuming the movie with ID 21 exists\n    .send(updatedMovie)\n    .end((err, res) => {\n        expect(res).to.have.status(200);\n        expect(res.body).to.have.property('message').equal('Movie updated successfully');\n        done();\n    });",
+                  "err": {},
+                  "uuid": "25d96cf3-8792-4170-a0e3-64d65b136856",
+                  "parentUUID": "514fdb83-5f14-452b-8e77-93bcd2298963",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "25d96cf3-8792-4170-a0e3-64d65b136856"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 16,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 60000
+            },
+            {
+              "uuid": "490ff6b0-edea-4fc0-be91-432f0365348d",
+              "title": "DELETE /movies/:id",
+              "fullFile": "F:\\Movies API\\movies_api\\__tests__\\test.js",
+              "file": "\\__tests__\\test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should delete an existing movie",
+                  "fullTitle": "Movie API DELETE /movies/:id should delete an existing movie",
+                  "timedOut": false,
+                  "duration": 14,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "chai\n    .request(app)\n    .delete('/movies/21') // Assuming the movie with ID 21 exists\n    .end((err, res) => {\n        expect(res).to.have.status(200);\n        expect(res.body).to.have.property('message').equal('Movie deleted successfully');\n        done();\n    });",
+                  "err": {},
+                  "uuid": "165046f1-41e9-4254-847c-d3828983ed77",
+                  "parentUUID": "490ff6b0-edea-4fc0-be91-432f0365348d",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "165046f1-41e9-4254-847c-d3828983ed77"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 14,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 60000
+            },
+            {
+              "uuid": "b83e3ffa-b9b8-49ba-b9c3-b2206da8be32",
+              "title": "GET /movies/range",
+              "fullFile": "F:\\Movies API\\movies_api\\__tests__\\test.js",
+              "file": "\\__tests__\\test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should return movies within the specified rating range",
+                  "fullTitle": "Movie API GET /movies/range should return movies within the specified rating range",
+                  "timedOut": false,
+                  "duration": 15,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const minRating = 7.5;\nconst maxRating = 8.5;\nchai\n    .request(app)\n    .get(`/movies/range?minRating=${minRating}&maxRating=${maxRating}`)\n    .end((err, res) => {\n        expect(res).to.have.status(200);\n        expect(res.body).to.be.an('array');\n        res.body.forEach((movie) => {\n            expect(movie.rating).to.be.gte(minRating);\n            expect(movie.rating).to.be.lte(maxRating);\n        });\n        done();\n    });",
+                  "err": {},
+                  "uuid": "4cf9cb39-af76-4cde-8aee-60c7d0539785",
+                  "parentUUID": "b83e3ffa-b9b8-49ba-b9c3-b2206da8be32",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return an empty array if no movies are found within the rating range",
+                  "fullTitle": "Movie API GET /movies/range should return an empty array if no movies are found within the rating range",
+                  "timedOut": false,
+                  "duration": 11,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const minRating = 10.0;\nconst maxRating = 10.0;\nchai\n    .request(app)\n    .get(`/movies/range?minRating=${minRating}&maxRating=${maxRating}`)\n    .end((err, res) => {\n        expect(res).to.have.status(200);\n        expect(res.body).to.be.an('array').that.is.empty;\n        done();\n    });",
+                  "err": {},
+                  "uuid": "a5c7dad6-0191-4541-9ae2-9b97a1cc4aa9",
+                  "parentUUID": "b83e3ffa-b9b8-49ba-b9c3-b2206da8be32",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return a 400 Bad Request status if minRating or maxRating is missing",
+                  "fullTitle": "Movie API GET /movies/range should return a 400 Bad Request status if minRating or maxRating is missing",
+                  "timedOut": false,
+                  "duration": 12,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "chai\n    .request(app)\n    .get('/movies/range')\n    .end((err, res) => {\n        expect(res).to.have.status(400);\n        expect(res.body).to.have.property('message').equal('Please provide both minRating and maxRating query parameters');\n        done();\n    });",
+                  "err": {},
+                  "uuid": "cf3bd84e-b68d-40ea-938b-a8d9b10de76d",
+                  "parentUUID": "b83e3ffa-b9b8-49ba-b9c3-b2206da8be32",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "4cf9cb39-af76-4cde-8aee-60c7d0539785",
+                "a5c7dad6-0191-4541-9ae2-9b97a1cc4aa9",
+                "cf3bd84e-b68d-40ea-938b-a8d9b10de76d"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 38,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 60000
+            },
+            {
+              "uuid": "0297d833-eec4-4ba4-a094-3d1e193d3594",
+              "title": "GET /movies/genre/:genre",
+              "fullFile": "F:\\Movies API\\movies_api\\__tests__\\test.js",
+              "file": "\\__tests__\\test.js",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should return movies with the specified genre",
+                  "fullTitle": "Movie API GET /movies/genre/:genre should return movies with the specified genre",
+                  "timedOut": false,
+                  "duration": 12,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const genre = 'Action';\nchai\n    .request(app)\n    .get(`/movies/genre/${genre}`)\n    .end((err, res) => {\n        expect(res).to.have.status(200);\n        expect(res.body).to.be.an('array');\n        res.body.forEach((movie) => {\n            expect(movie.genre.toLowerCase()).to.include(genre.toLowerCase());\n        });\n        done();\n    });",
+                  "err": {},
+                  "uuid": "d80ea81c-2b7b-455e-b698-612be7926e3f",
+                  "parentUUID": "0297d833-eec4-4ba4-a094-3d1e193d3594",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should return an empty array if no movies are found with the specified genre",
+                  "fullTitle": "Movie API GET /movies/genre/:genre should return an empty array if no movies are found with the specified genre",
+                  "timedOut": false,
+                  "duration": 12,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const genre = 'Silent';\nchai\n    .request(app)\n    .get(`/movies/genre/${genre}`)\n    .end((err, res) => {\n        expect(res).to.have.status(404);\n        expect(res.body).to.have.property('message').equal('No movies found with the specified genre');\n        done();\n    });",
+                  "err": {},
+                  "uuid": "c5cd0d9f-91fe-487b-adde-9f094d9a3d34",
+                  "parentUUID": "0297d833-eec4-4ba4-a094-3d1e193d3594",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "d80ea81c-2b7b-455e-b698-612be7926e3f",
+                "c5cd0d9f-91fe-487b-adde-9f094d9a3d34"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 24,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 60000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "8.2.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "6.2.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "5.1.0"
+    }
+  }
+}
